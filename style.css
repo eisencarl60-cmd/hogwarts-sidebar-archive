@@ -126,7 +126,7 @@ body {
 }
 
 .sparkle-2 {
-  right: 0;
+  right: -5px;
   top: 18px;
   font-size: 10px;
   animation-delay: .6s;
