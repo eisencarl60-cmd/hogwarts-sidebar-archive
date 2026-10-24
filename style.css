@@ -51,7 +51,7 @@ body {
 }
 
 .header::before {
-  content: "✦";
+  content: "🌕";
   position: absolute;
   top: 8px;
   left: 12px;
@@ -60,7 +60,7 @@ body {
 }
 
 .header::after {
-  content: "✦";
+  content: "🌕";
   position: absolute;
   top: 8px;
   right: 12px;
