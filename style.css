@@ -872,6 +872,8 @@ body {
   margin-bottom: 4px;
 }
 
+/* Username — first line */
+
 .award-name {
   display: block;
   font-size: 10px;
@@ -879,13 +881,27 @@ body {
   overflow-wrap: anywhere;
 }
 
+/* Hogwarts identity — second line */
+
+.award-title {
+  display: block;
+  margin-top: 2px;
+  font-size: 10px;
+  font-weight: bold;
+  color: #D8BD78;
+  overflow-wrap: anywhere;
+}
+
+/* Award total — third line */
+
 .award-count {
-  display: inline;
-  margin-top: 0;
-  margin-left: 3px;
+  display: block;
+  margin-top: 3px;
+  margin-left: 0;
   font-size: 9px;
   font-weight: bold;
   white-space: nowrap;
+  color: #D8BD78;
   opacity: 0.9;
 }
 /* GRAMOPHONE */
