@@ -714,11 +714,24 @@ const avatar = await getChessAvatar(entry.student.name);
 '<img class="award-avatar" src="' +
 (avatar || 'https://www.chess.com/bundles/web/images/user-image.007dad08.svg') +
 '" alt="' + entry.student.name + '">' +
+        /*
+    ========================================
+    🏅 THREE-LINE AWARD DISPLAY
+    USERNAME • HOGWARTS IDENTITY • TOTAL
+    ========================================
+    */
+
     '<span class="award-name">@' +
     entry.student.name +
-    '<span class="award-count"> 🏅 ' +
+    '</span>' +
+
+    '<span class="award-title">' +
+    entry.student.displayName +
+    '</span>' +
+
+    '<span class="award-count">🏅 ' +
     entry.student.awards +
-    '</span></span>' +
+    ' 𝓢𝓐</span>' +
 
     '</a>';
 
