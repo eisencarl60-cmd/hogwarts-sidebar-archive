@@ -761,7 +761,10 @@ body {
   }
 }
 
-/* SPECIAL AWARDS TRINITY */
+
+/* ========================================
+   🏅 SPECIAL AWARDS TRINITY — REDESIGN
+   ======================================== */
 
 .awards-subtitle {
   text-align: center;
@@ -770,6 +773,8 @@ body {
   color: #d7c4ff;
   margin-bottom: 14px;
 }
+
+/* Three-column podium */
 
 #awards-trinity {
   position: relative;
@@ -780,7 +785,7 @@ body {
   padding: 20px 4px 4px;
 }
 
-/* Magical alchemical triangle */
+/* Alchemical triangle */
 
 #awards-trinity::before {
   content: "△";
@@ -788,7 +793,7 @@ body {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%) scaleX(1.8);
-  font-size: 95px;
+  font-size: 180px;
   color: rgba(190,160,255,.12);
   text-shadow:
     0 0 10px rgba(160,120,255,.25),
@@ -809,40 +814,90 @@ body {
 #award-first {
   transform: translateY(-14px);
 }
+
 #award-second {
   transform: translateY(-7px);
 }
-/* Individual student cards */
+
+/* Individual award cards */
 
 .award-card {
-  display: block;
-  text-align: center;
-  padding: 9px 4px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  height: 178px;
+  padding: 8px 4px;
   border-radius: 9px;
-  background: rgba(10,8,5,.55);
+  text-align: center;
   text-decoration: none;
-  transition: .3s;
+  overflow: hidden;
+  transition: transform .3s ease, box-shadow .3s ease;
 }
 
-.award-card:hover {
-  transform: translateY(-3px) scale(1.03);
+/* Hide old Chess.com username line */
+
+.award-name {
+  display: none;
 }
+
+/* Medal */
+
+.award-medal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 27px;
+  font-size: 21px;
+  margin-bottom: 3px;
+}
+
+/* Profile portrait */
+
 .award-avatar {
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    object-fit: cover;
-    display: block;
-    margin: 6px auto;
-    border: 2px solid rgba(215, 196, 255, .75);
-    box-shadow: 0 0 12px rgba(190, 160, 255, .35);
-    transition: transform .25s ease, box-shadow .25s ease;
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 5px auto 7px;
+  border: 2px solid rgba(215,196,255,.75);
+  box-shadow: 0 0 12px rgba(190,160,255,.35);
+  transition: transform .3s ease, box-shadow .3s ease;
 }
 
-.award-card:hover .award-avatar {
-    transform: scale(1.12);
-    box-shadow: 0 0 18px rgba(215, 196, 255, .65);
+/* Hogwarts identity */
+
+.award-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 34px;
+  flex-shrink: 0;
+  font-size: 13px;
+  line-height: 1.2;
+  font-weight: bold;
+  overflow-wrap: anywhere;
+  text-align: center;
 }
+
+/* Award total */
+
+.award-count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: auto;
+  min-height: 20px;
+  font-size: 11px;
+  font-weight: bold;
+}
+
 /* Gold */
 
 .award-first {
@@ -869,26 +924,69 @@ body {
   box-shadow: 0 0 8px rgba(230,150,90,.18);
 }
 
-.award-medal {
-  display: block;
-  font-size: 24px;
-  margin-bottom: 4px;
+/* Magical sparkle overlay */
+
+.award-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background-image:
+    radial-gradient(circle at 15% 20%, #fff 0 1px, transparent 2px),
+    radial-gradient(circle at 80% 25%, #ffe9a3 0 1.5px, transparent 2.5px),
+    radial-gradient(circle at 35% 65%, #fff 0 1px, transparent 2px),
+    radial-gradient(circle at 85% 80%, #fff2c2 0 1px, transparent 2px),
+    radial-gradient(circle at 55% 42%, #fff 0 1px, transparent 2px);
+  transition: opacity .3s ease;
 }
 
-.award-name {
-  display: block;
-  font-size: 10px;
-  font-weight: bold;
-  overflow-wrap: anywhere;
+/* Hover enchantment */
+
+.award-card:hover {
+  transform: translateY(-3px) scale(1.02);
 }
 
-.award-count {
-  display: block;
-  margin-top: 4px;
-  font-size: 11px;
-  font-weight: bold;
-
+.award-card:hover::after {
+  opacity: 1;
+  animation: award-sparkle 1.5s ease-in-out infinite alternate;
 }
+
+.award-card:hover .award-avatar {
+  transform: scale(1.08);
+  box-shadow: 0 0 18px rgba(215,196,255,.7);
+}
+
+.award-first:hover {
+  box-shadow: 0 0 18px rgba(255,215,80,.55);
+}
+
+.award-second:hover {
+  box-shadow: 0 0 16px rgba(190,215,255,.4);
+}
+
+.award-third:hover {
+  box-shadow: 0 0 16px rgba(230,150,90,.4);
+}
+
+@keyframes award-sparkle {
+  from { opacity: .35; }
+  to   { opacity: 1; }
+}
+
+/* Respect reduced-motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+  .award-card,
+  .award-avatar {
+    transition: none;
+  }
+
+  .award-card:hover::after {
+    animation: none;
+  }
+}
+
 /* GRAMOPHONE */
 
 .gramophone {
